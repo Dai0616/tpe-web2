@@ -1,6 +1,4 @@
 {include file="header.tpl"}
-
-
 <table class="table-group-divider">
     <thead>
         <tr>
@@ -8,7 +6,7 @@
             <th scope="col">Estreno</th>
             <th scope="col">Puntuación</th>
             <th scope="col">Director</th>
-            <th scope="col">fk_estudio</th>
+            {* <th scope="col">fk_estudio</th> *}
         </tr>
     </thead>
     <tbody class="table-group-divider">
@@ -18,12 +16,12 @@
                 <td>{$peli->estreno}</td>
                 <td>{$peli->puntuacion}</td>
                 <td>{$peli->director}</td>
-                <td>{$peli->fk_estudio}</td>
+                {* <td>{$peli->fk_estudio}</td> *}
             </tr>
         {/foreach}
     </tbody>
 </table>
-<h1>Edit Form</h1>
+<h1>Editar formulario</h1>
 <form action="editPeli/{$peli->id}" method="POST" class="my-4">
 <div class="mb-3">
 <label class="form-label">Seleccione una opcion:</label>

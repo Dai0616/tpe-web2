@@ -14,8 +14,7 @@ class peliController {
         $this->view = new PeliView();
         $this->modelEstudio = new EstudioModel();
         $this->authHelper = new AuthHelper();
-       
-    }
+       }
 
     public function showPelis() {
         $this->authHelper->isLoggedIn();
@@ -23,6 +22,7 @@ class peliController {
         $modelEstudio = $this->modelEstudio->getAllEstudios();
         $this->view->showPelis($pelis, $modelEstudio);
     }
+    
     public function showDetalle($id){
         $detalle= $this->modelEstudio->getRegisterEstudioById2($id);
         $this->view->showDetalle($detalle);
@@ -30,7 +30,7 @@ class peliController {
 
    function addPeli() {
         // TODO: validar entrada de datos
-         $authHelper->checkLoggedIn();
+        $this->authHelper->checkLoggedIn();
         $pelicula = $_POST['pelicula'];
         $estreno = $_POST['estreno'];
         $puntuacion = $_POST['puntuacion'];
@@ -49,14 +49,14 @@ class peliController {
         header('Location: ' . BASE_URL. 'listaPelis');
     }
     function  showEditPeli($id){
-         $authHelper->checkLoggedIn();
+         $this->authHelper->checkLoggedIn();
         $pelis = $this->model->getRegisterById($id);
         $estudios = $this->modelEstudio->getRegisterEstudioById($id);
         $this->view->showEditPelis($pelis, $estudios);
 }
 
 function insertEditPeli($id){
-     $authHelper->checkLoggedIn();
+     $this->authHelper->checkLoggedIn();
     if((isset($_POST['pelicula'])&&isset($_POST['estreno'])&&isset($_POST['puntuacion'])&&isset($_POST['director'])&&isset($_POST['categoria']))&&!empty($_POST['pelicula'])&&!empty($_POST['estreno'])&&!empty($_POST['puntuacion'])&&!empty($_POST['director'])&&!empty($_POST['categoria'])){      
         $pelicula = $_POST['pelicula'];
         $estreno = $_POST['estreno'];
@@ -71,12 +71,13 @@ function insertEditPeli($id){
 }
    
     function deletePeli($id) {
-         $authHelper->checkLoggedIn();
+         $this->authHelper->checkLoggedIn();
         $this->model->deletePeliById($id);
         header('Location: ' . BASE_URL. 'listaPelis');
     }
 
     public function filterCategory($id){
+        $this->authHelper->checkLoggedIn();
         $name = $this->modelEstudio->getNameById($id);
         $filters = $this->model->getFilter($id);
         $estudios = $this->modelEstudio->getAllEstudios();

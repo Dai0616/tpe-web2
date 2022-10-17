@@ -26,7 +26,16 @@ function addListaEstudio() {
         $nombre_estudio = $_POST['nombre_estudio'];
         $creacion = $_POST['creacion'];
         $historia = $_POST['historia'];
-        $id = $this->model->insertEstudio($nombre_estudio, $creacion, $historia);
+        //agrego la imagen
+        if ($_FILES['input_name']['type'] =="image/jpg" ||
+        $_FILES['input_name']['type'] =="image/jpeg"||
+        $_FILES['input_name']['type'] =="image/png" ){
+        $this->model->insertEstudio($nombre_estudio, $creacion, $historia, $_FILES['input_name']['tmp_name']);
+        }
+        else{
+            $id = $this->model->insertEstudio($nombre_estudio, $creacion, $historia);
+        }
+        
         header("Location: " . BASE_URL. 'listaEstudios');
     
     }

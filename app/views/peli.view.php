@@ -33,9 +33,3 @@ class PeliView {
     $this->smarty->display('showDetail.tpl');
    }
 }
-
-//     function showError ($msg){
-//         echo "<h1> ERROR! </h1>";
-//         echo "<h2> $msg </msg>";
-//     }
-// }

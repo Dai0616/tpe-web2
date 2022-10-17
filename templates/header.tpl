@@ -6,6 +6,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./app/views/css/estilo.css" type="text/css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <title>PELICULAS</title>
@@ -13,8 +14,8 @@
 
 <body>
   <header>
-    <img src="img/portada.jpg" style="width: 90%; height: 16rem; object-fit:cover;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" Style="margin-bottom: 2rem;">
+    <img src="img/portada.jpg" class="portada">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -46,13 +47,12 @@
           </ul>
         </div>
             {if !isset($smarty.session.USER_ID)}
-              <a href="login"><button class="btn btn-outline-light" type="button" style="margin: 0 1rem;">Login</button></a>
+              <a href="login"><button class="btn btn-outline-light login" type="button">Login</button></a>
               {else} 
-              <a href="logout"><button class="btn btn-outline-light" type="button" style="margin: 0 1rem;">Logout</button></a>
-              <span><p style="color:#777777">User: {$smarty.session.USER_EMAIL}</p></span>
+                <span><p style="color:#777777">User: {$smarty.session.USER_EMAIL}</p></span>
+              <a href="logout"><button class="btn btn-outline-light logout" type="button">Logout</button></a>
              {/if}
-
-        </div>
+         </div>
       </div>
     </nav>
 </header>

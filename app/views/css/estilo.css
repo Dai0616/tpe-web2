@@ -1,0 +1,33 @@
+img.portada{
+    width: 90%;
+    height: 16rem;
+     object-fit:cover;
+}
+
+nav{
+    margin-bottom: 2rem;
+}
+
+.login, .logout{
+    margin: 0 1rem;
+}
+
+table{
+    margin: 0 auto;
+    background-color: lightgrey;
+}
+
+.detalle{
+    color: black;
+}
+.imgpeli{
+    width:3rem;
+}
+
+.imgestudio{
+    width: 5rem;
+}
+
+.imgdetalle{
+    width:10rem;
+}

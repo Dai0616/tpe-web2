@@ -35,15 +35,24 @@ class EstudioModel{
         $estudioRegister = $query->fetchAll(PDO::FETCH_OBJ);
         return $estudioRegister;
     }
-    function insertEstudio($nombre_estudio, $creacion, $historia) { 
-        $query = $this->db->prepare("INSERT INTO estudio (nombre_estudio, creacion, historia) VALUES (?, ?, ?)");
-         $query->execute([$nombre_estudio, $creacion, $historia]);
+    function insertEstudio($nombre_estudio, $creacion, $historia, $imagen = null) { 
+        $pathImg = null;
+        if ($imagen)
+        $pathImg = $this->uploadImage($imagen);
+
+        $query = $this->db->prepare("INSERT INTO estudio (nombre_estudio, creacion, historia, imagen) VALUES (?, ?, ?, ?)");
+         $query->execute([$nombre_estudio, $creacion, $historia, $pathImg]);
          
          return $this->db->lastInsertId();
      }
+     private function uploadImage($image){
+        $target = 'img/estudios/' . uniqid() . '.jpg';
+        move_uploaded_file($image, $target);//funcion por defecto para mover archivos de una carpeta a otra
+        return $target;
+    }
 
      public function insertEditEstudio($nombre_estudio, $creacion, $historia, $id){
-        
+        $this->authHelper->checkLoggedIn();
         $query = $this->db->prepare("UPDATE `estudio` SET nombre_estudio=?, creacion=?, historia=? WHERE id_nombre_fk=?");
         $query->execute([$nombre_estudio, $creacion, $historia, $id]);
 }
