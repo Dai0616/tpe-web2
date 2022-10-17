@@ -17,6 +17,12 @@ class EstudioModel{
 
         return $estudios;
     }
+    public function getNameById($id){
+        $query = $this->db->prepare("SELECT `nombre_estudio`FROM `estudio` WHERE `id_nombre_fk`= ?");
+        $query->execute([$id]);
+        $name = $query->fetch(PDO::FETCH_OBJ);
+        return $name;
+    }
     public function getRegisterEstudioById($id){
         $query = $this->db->prepare("SELECT * FROM estudio");
         $query->execute();

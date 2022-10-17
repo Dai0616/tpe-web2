@@ -27,7 +27,7 @@
 <form action="editPeli/{$peli->id}" method="POST" class="my-4">
 <div class="mb-3">
 <label class="form-label">Seleccione una opcion:</label>
-<select name="id_nombre_fk" class="form-control">
+<select name="categoria" class="form-control">
 {foreach from=$estudios item=$item}
     <option value="{$item->id_nombre_fk}">{$item->nombre_estudio}</option>
 {/foreach}

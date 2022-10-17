@@ -22,7 +22,16 @@ class PeliView {
         
         $this->smarty->display('showEditPelis.tpl');
     }
-
+    function showFilter($filters, $name, $estudios){
+        $this->smarty->assign('name', $name); 
+        $this->smarty->assign('filters', $filters);
+        $this->smarty->assign('estudios', $estudios);
+        $this->smarty->display('filterView.tpl');
+    }
+   function showDetalle($detalle){
+    $this->smarty->assign('detalle', $detalle);
+    $this->smarty->display('showDetail.tpl');
+   }
 }
 
 //     function showError ($msg){

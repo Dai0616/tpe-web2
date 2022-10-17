@@ -1,12 +1,11 @@
 <?php
-require_once './app/controllers/home.controller.php';
 require_once './app/controllers/peli.controller.php';
 require_once './app/controllers/estudio.controller.php';
 require_once './app/controllers/auth.controller.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 
-$action ='home'; // acción por defecto
+$action ='listaPelis'; // acción por defecto
 if (!empty($_GET['action'])) {
     $action = $_GET['action'];
 }
@@ -17,22 +16,23 @@ $params = explode('/', $action);
 
 // tabla de ruteo
 switch ($params[0]) {
-     case 'home':
-         $hcontroller = new HomeController();
-         $hcontroller->showPelisHome();
+     case 'login':
+         $authcontroller = new AuthController();
+         $authcontroller-> showFormLogin();
          break;
-    case 'login':
-        $authcontroller = new AuthController();
-        $authcontroller-> showFormLogin();
-        break;
-    case 'validate':
-        $authController = new AuthController();
-        $authController->validateUser();
-        break;
-    case 'logout':
-        $authController = new AuthController();
-        $authController->logout();
-        break;
+     case 'validate':
+         $authController = new AuthController();
+         $authController->validateUser();
+         break;
+     case 'logout':
+         $authController = new AuthController();
+         $authController->logout();
+         break;
+     case 'filter':
+         $id = $params[1];
+         $pcontroller = new PeliController();
+          $pcontroller->filterCategory($id);
+         break;
     case 'listaPelis':
         $pcontroller = new PeliController();
         $pcontroller->showPelis();
@@ -41,7 +41,12 @@ switch ($params[0]) {
         $econtroller = new EstudioController();
         $econtroller->showEstudios();
         break;
-     case 'addPeli':
+    case 'detalle':
+        $id = $params[1];
+        $pcontroller  = new PeliController();
+        $pcontroller ->showDetalle($id);  
+        break;
+    case 'addPeli':
         $pcontroller = new PeliController();
         $pcontroller->addPeli();
         break;
@@ -51,23 +56,23 @@ switch ($params[0]) {
         break;
     case 'showEditPeli':
         $id = $params[1];
-        $pController  = new PeliController();
-        $pController ->showEditPeli($id);  
+        $pcontroller  = new PeliController();
+        $pcontroller ->showEditPeli($id);  
         break;
     case 'editPeli':
         $id = $params[1];
-        $pController  = new PeliController();
-        $pController ->insertEditPeli($id);  
+        $pcontroller  = new PeliController();
+        $pcontroller ->insertEditPeli($id);  
         break;
     case 'showEditEstudio':
             $id = $params[1];
-            $eController = new EstudioController();
-            $eController->showEditEstudio($id);  
+            $econtroller = new EstudioController();
+            $econtroller->showEditEstudio($id);  
              break;
      case 'editEstudio':
             $id = $params[1];
-            $eController = new EstudioController();
-            $eController ->insertEditEstudio($id);  
+            $econtroller = new EstudioController();
+            $econtroller ->insertEditEstudio($id);  
              break;
     case 'deletePeli':
         // obtengo el parametro de la acción

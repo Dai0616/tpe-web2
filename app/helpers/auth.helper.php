@@ -13,4 +13,10 @@ class AuthHelper {
             die();
         }
     } 
+    //No está seteado inicie igual, pero sirve para los if else de los botones
+    public function isLoggedIn(){
+        if(!isset($_SESSION['IS_LOGGED'])){
+        session_start();
+        }
+    }
 }

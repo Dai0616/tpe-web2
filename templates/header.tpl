@@ -19,9 +19,6 @@
         <div class="collapse navbar-collapse" id="navbarColor01">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="home">Home</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="listaPelis">Peliculas</a>
             </li>
             <li class="nav-item">
@@ -33,6 +30,11 @@
                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Categoria
                    </a>
+                   <ul class="dropdown-menu dropdown-menu-dark">
+                                {foreach from=$estudios item=$estudio}
+                                    <li><a class="dropdown-item" href="filter/{$estudio->id_nombre_fk}">{$estudio->nombre_estudio}</a></li>
+                                {/foreach}
+                            </ul>
                    <ul class="dropdown-menu dropdown-menu-dark">
                    {foreach from=$estudios item=$est}
                     <li><a class="dropdown-item" href="{$est->fk_estudio}">{$est->nombre_estudio}</a></li>

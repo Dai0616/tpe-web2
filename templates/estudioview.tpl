@@ -14,8 +14,10 @@
             <td>{$est->nombre_estudio}</td>
             <td>{$est->creacion}</td>
             <td>{$est->historia}</td>
+            {if isset($smarty.session.USER_ID)}
             <td><a href='showEditEstudio/{$est->id_nombre_fk}' type='button' class='btn btn-danger ml-auto'>Editar</a></td>
             <td><a href='deleteEstudio/{$est->id_nombre_fk}' type='button' class='btn btn-danger ml-auto'>Borrar</a></td>
+            {/if}
             </tr>
         {/foreach}
          </tbody>
