@@ -2,3 +2,6 @@ templates_c
 img/peliculas/*.jpg
 img/peliculas/*.png
 img/peliculas/*.jpeg
+img/estudios/*.jpg
+img/estudios/*.png
+img/estudios/*.jpeg
