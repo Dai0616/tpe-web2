@@ -52,7 +52,6 @@ class EstudioModel{
     }
 
      public function insertEditEstudio($nombre_estudio, $creacion, $historia, $id){
-        $this->authHelper->checkLoggedIn();
         $query = $this->db->prepare("UPDATE `estudio` SET nombre_estudio=?, creacion=?, historia=? WHERE id_nombre_fk=?");
         $query->execute([$nombre_estudio, $creacion, $historia, $id]);
 }

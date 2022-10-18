@@ -28,8 +28,9 @@ class PeliView {
         $this->smarty->assign('estudios', $estudios);
         $this->smarty->display('filterView.tpl');
     }
-   function showDetalle($detalle){
+   function showDetalle($detalle, $estudios){
     $this->smarty->assign('detalle', $detalle);
+    $this->smarty->assign('estudios', $estudios);
     $this->smarty->display('showDetail.tpl');
    }
 }
